@@ -35,6 +35,12 @@ TODO: Add long description of the pod here.
   # s.resource_bundles = {
   #   'swift_blp' => ['swift_blp/Assets/*.png']
   # }
+  s.dependency 'Alamofire', '4.9.1'
+  s.dependency 'Moya', '13.0.1'
+  s.dependency 'SwiftyJSON', '5.0.1'
+  s.dependency 'RxSwift', '6.5.0'
+  s.dependency 'RxCocoa', '6.5.0'
+  s.dependency 'HandyJSON' #4.1.1 (5.0.2)
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

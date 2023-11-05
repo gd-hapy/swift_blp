@@ -1,5 +1,5 @@
 import XCTest
-import swift_blp
+import swift_blp_Example
 
 class Tests: XCTestCase {
     
@@ -16,6 +16,7 @@ class Tests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
+        _testHomeApi()
     }
     
     func testPerformanceExample() {
@@ -23,6 +24,13 @@ class Tests: XCTestCase {
         self.measure() {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func _testHomeApi() {
+        let hotSearchArr = UserDefaults.standard.value(forKey: "__key_hot_search_key") as! Array<Any>
+        XCTAssert(hotSearchArr.count > 5, "pass")
+        let top100Arr = UserDefaults.standard.value(forKey: "__key_hot_search_top_100_key") as! Array<Any>
+        XCTAssert(top100Arr.count >= 100, "pass")
     }
     
 }

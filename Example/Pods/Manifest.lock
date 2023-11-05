@@ -1,0 +1,73 @@
+PODS:
+  - Alamofire (4.9.1)
+  - EZLoadingActivity (1.01)
+  - HandyJSON (5.0.2)
+  - lottie-ios (3.2.3)
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Result (4.1.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (5.0.1)
+  - ZFPlayer (4.1.4):
+    - ZFPlayer/Core (= 4.1.4)
+  - ZFPlayer/AVPlayer (4.1.4):
+    - ZFPlayer/Core
+  - ZFPlayer/ControlView (4.1.4):
+    - ZFPlayer/Core
+  - ZFPlayer/Core (4.1.4)
+
+DEPENDENCIES:
+  - Alamofire (= 4.9.1)
+  - EZLoadingActivity
+  - HandyJSON
+  - lottie-ios
+  - Moya (= 13.0.1)
+  - RxCocoa (= 6.5.0)
+  - RxSwift (= 6.5.0)
+  - SVProgressHUD
+  - SwiftyJSON (= 5.0.1)
+  - ZFPlayer (~> 4.1.4)
+  - ZFPlayer/AVPlayer
+  - ZFPlayer/ControlView
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - EZLoadingActivity
+    - HandyJSON
+    - lottie-ios
+    - Moya
+    - Result
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SVProgressHUD
+    - SwiftyJSON
+    - ZFPlayer
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  EZLoadingActivity: edd7e387e5197b116ce2cccb3fd747ababc2a510
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  ZFPlayer: 5cf39e8d9f0c2394a014b0db4767b5b5a6bffe13
+
+PODFILE CHECKSUM: abec28c4f39a21710636187764062817bc3924d6
+
+COCOAPODS: 1.11.3

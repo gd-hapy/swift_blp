@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        let home = HomePageViewController()
+        let nav = UINavigationController(rootViewController: home)
+        self.addChildViewController(nav)
+        view.addSubview(nav.view)
     }
 
     override func didReceiveMemoryWarning() {

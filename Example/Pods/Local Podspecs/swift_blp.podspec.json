@@ -1,0 +1,42 @@
+{
+  "name": "swift_blp",
+  "version": "0.1.0",
+  "summary": "A short description of swift_blp.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/gd-hapy/swift_blp",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "gd-hapy": "gdhapy@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/gd-hapy/swift_blp.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "swift_blp/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+      "4.9.1"
+    ],
+    "Moya": [
+      "13.0.1"
+    ],
+    "SwiftyJSON": [
+      "5.0.1"
+    ],
+    "RxSwift": [
+      "6.5.0"
+    ],
+    "RxCocoa": [
+      "6.5.0"
+    ],
+    "HandyJSON": [
+
+    ]
+  }
+}
