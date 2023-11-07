@@ -21,8 +21,6 @@ class VideoPlayerService {
             let subStr = String(response_str[startIndex..<endIndex])
 
             let model = VideoModel.deserialize(from: subStr)
-//            model?.info?.first?.videoModels?.first?.videoPlaying = true
-//            model?.info?.first?.videoModels?.first?.changePlayingStatus(status: true)
 
             completion(model!)
         }
@@ -31,7 +29,19 @@ class VideoPlayerService {
     static func requestVideoPlayingInfo(_ url: String, completion: @escaping (String) -> Void) {
         RequestHandler.request(RequestAPI.videoPlayerRequestParsePlayingUrl(url)) { data in
             print(data)
-            let response_str = String(data: data, encoding: .utf8)!
+            _ = String(data: data, encoding: .utf8)!
+            
+            let jsonData = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any>
+
+            let url = jsonData!?["url"]
+            completion(url as! String)
+        }
+    }
+    
+    static func requestVideoPlayingInfo_back(_ url: String, completion: @escaping (String) -> Void) {
+        RequestHandler.request(RequestAPI.videoPlayerRequestParsePlayingUrl_back(url)) { data in
+            print(data)
+            _ = String(data: data, encoding: .utf8)!
             
             let jsonData = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any>
 

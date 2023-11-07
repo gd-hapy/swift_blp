@@ -56,10 +56,9 @@ extension RequestAPI: TargetType {
         case  .homeHotSearchRank, .searchResultRequest, .videoPlayerRequest:
             return URL(string: APIManager.baseUrl)!
         case .videoPlayerRequestParsePlayingUrl:
-//            "https://json.vipjx.cnow.eu.org/?url="
             return URL(string: "https://json.2s0.cn:5678/home/api?type=ys&uid=1359749&key=hinotvxHIKMNSXY034&url=")!
-            
-        https://json.vipjx.cnow.eu.org/?url=https://v.youku.com/v_show/id_XNTk4MTEyMjA5Mg==.html
+        case .videoPlayerRequestParsePlayingUrl_back:
+            return URL(string: "https://json.vipjx.cnow.eu.org/?url=")!
         default:
             return URL(string: "")!
         }
@@ -72,21 +71,18 @@ extension RequestAPI: TargetType {
         switch self {
         case .homeHotSearch:
             return "so.php"
-//            return "api.php?out=jsonp&wd=%E4%B8%83%E9%BE%99%E7%8F%A0&cb=jQuery182001350803151125013_1697708281001&_=1697708281006"
         case .homeHotSearchRank:
             return ""
         case let .searchResultRequest(word):
-            let dd = "api.php?out=jsonp&wd=\(word)&cb=\(paramJquery())&_=\(timeStamp())"//"&cb=jQuery18208719634389386499_1697830215202&_=1697830215246"
+            let path = "api.php?out=jsonp&wd=\(word)&cb=\(paramJquery())&_=\(timeStamp())"
             
-            let fuck = dd.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let fuck = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
 
-            
             return fuck!
         case let .videoPlayerRequest(flag, id):
-            let dd = "api.php?out=jsonp&flag=\(Int(flag!))&id=\(Int(id!))&cb=" + paramJquery() + "&_=" + timeStamp()
-            //jQuery182002313945027965092_1697895735454&_=1697895735921"
-            return dd
-        case let .videoPlayerRequestParsePlayingUrl(url):
+            let path = "api.php?out=jsonp&flag=\(Int(flag!))&id=\(Int(id!))&cb=" + paramJquery() + "&_=" + timeStamp()
+            return path
+        case let .videoPlayerRequestParsePlayingUrl(url), let .videoPlayerRequestParsePlayingUrl_back(url):
             return url
         default:
             return ""
@@ -111,7 +107,7 @@ extension RequestAPI: TargetType {
 
     //3. Task是一个枚举值，根据后台需要的数据，选择不同的http task。
     var task: Task {
-        var params: [String: Any] = [:]
+        let params: [String: Any] = [:]
         switch self {
         case .homeHotSearch:
             return .requestPlain
@@ -121,7 +117,7 @@ extension RequestAPI: TargetType {
             return .requestPlain
         case .videoPlayerRequest:
             return .requestPlain
-        case .videoPlayerRequestParsePlayingUrl:
+        case .videoPlayerRequestParsePlayingUrl, .videoPlayerRequestParsePlayingUrl_back:
             return .requestPlain
         }
         return .requestParameters(parameters: params, encoding: URLEncoding.default)

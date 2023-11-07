@@ -34,17 +34,36 @@ class VideoPlayerPageController: BasePageViewController {
             videoModel = model
             videoPlayingModel = model.info?.first?.videoModels?.first
             if ((model.url?.hasSuffix(".html")) == nil) { // html
-                VideoPlayerService.requestVideoPlayingInfo(model.url!) { [unowned self] str in
-                    if str.count > 0 {
-                        _playVideo(url: str)
-                    } else {
-                        SVProgressHUD.show(withStatus: "视频加载失败，切换源重试")
-                    }
-                }
+                self._parsePlayingUrl(url: model.url!)
             } else {
                 _playVideo(url: model.url!)
             }
         }
+    }
+    
+    static var retryCount = 0
+    func _parsePlayingUrl(url: String) {
+        VideoPlayerPageController.retryCount = 1
+        VideoPlayerService.requestVideoPlayingInfo(url) { [unowned self] str in
+            if str.count > 0 {
+                _playVideo(url: str)
+            } else {
+                VideoPlayerPageController.retryCount += 1
+                self._parsePlayingUrl_back(url: url);
+            }
+        }
+       
+    }
+    
+    func _parsePlayingUrl_back(url: String) {
+        VideoPlayerService.requestVideoPlayingInfo_back(url, completion: { [unowned self] str in
+            if str.count > 0 {
+                _playVideo(url: str)
+            } else {
+                VideoPlayerPageController.retryCount = 0
+                SVProgressHUD.show(withStatus: "视频加载失败，切换源重试")
+            }
+        })
     }
     
     
@@ -92,7 +111,6 @@ class VideoPlayerPageController: BasePageViewController {
         let playerManager = ZFAVPlayerManager()
         player = ZFPlayerController(playerManager: playerManager, containerView: containerView!)
         player.controlView = ZFPlayerControlView()
-//        id<ZFPlayerMediaPlayback> asset, ZFPlayerPlaybackState playState
         playerManager.playerPlayStateChanged = {[weak self](asset, playState:ZFPlayerPlaybackState) in
             if (playState != .playStatePlaying) {
                 self?._videoSpeedRateAccidentHandle()
@@ -127,14 +145,8 @@ class VideoPlayerPageController: BasePageViewController {
     
     func _switchPlayingVideo() {
         let playingUrl = self.videoPlayingModel?.videoUrl
-        if ((playingUrl?.hasSuffix(".html")) == nil) { // html 七龙珠
-            VideoPlayerService.requestVideoPlayingInfo(playingUrl!) { [unowned self] str in
-                if str.count > 0 {
-                    _playVideo(url: str)
-                } else {
-                    SVProgressHUD.show(withStatus: "视频加载失败，切换源重试")
-                }
-            }
+        if ((playingUrl?.hasSuffix(".html")) == nil) { // html
+            self._parsePlayingUrl(url: playingUrl!)
         } else {
             _playVideo(url: playingUrl!)
         }

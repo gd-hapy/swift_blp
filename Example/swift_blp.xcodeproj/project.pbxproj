@@ -711,6 +711,7 @@
 			baseConfigurationReference = 1BC607DDBE6BEA82CD892C43 /* Pods-swift_blp_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = B3FNS52DMT;
 				INFOPLIST_FILE = swift_blp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -728,6 +729,7 @@
 			baseConfigurationReference = 88D5820B0C87F537CEDD3C8A /* Pods-swift_blp_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = B3FNS52DMT;
 				INFOPLIST_FILE = swift_blp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
